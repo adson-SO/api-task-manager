@@ -24,6 +24,11 @@ class ProjectController {
         const { id } = req.params;
         try {
             const result = await ProjectService.findOne(id);
+
+            if(result === null) {
+                return res.status(404).json({ description: 'Not Found', name: 'Id not found in the database' })
+            }
+            
             return res.status(200).json(result);
         } catch (err) {
             return res.status(500).json({ description: err.name, name: err.message });
