@@ -35,6 +35,14 @@ class ProjectRepository {
 
         return result;
     }
+
+    async update(id, payload) {
+        const result = await models.Project.update(payload, {
+            where: { id: id }
+        });
+
+        return result;
+    }
 }
 
 module.exports = new ProjectRepository();
