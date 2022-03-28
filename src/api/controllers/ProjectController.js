@@ -10,6 +10,15 @@ class ProjectController {
             return res.status(500).json({ description: err.name, name: err.message });
         }
     }
+
+    async find(req, res) {
+        try {
+            const result = await ProjectService.find();
+            return res.status(200).json(result);
+        } catch (err) {
+            return res.status(500).json({ description: err.name, name: err.message })
+        }
+    }
 }
 
 module.exports = new ProjectController();

@@ -5,6 +5,11 @@ class ProjectService {
         const result = await ProjectRepository.create(payload);
         return result;
     }
+
+    async find() {
+        const result = await ProjectRepository.find();
+        return result;
+    }
 }
 
 module.exports = new ProjectService();
