@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Task.belongsTo(models.Project)
+      Task.belongsTo(models.Project);
     }
   }
   Task.init({

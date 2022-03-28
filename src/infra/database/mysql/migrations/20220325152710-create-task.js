@@ -17,11 +17,6 @@ module.exports = {
       completed: {
         type: Sequelize.BOOLEAN
       },
-      projectId: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: { model: 'Projects', key: 'id' }
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -29,6 +24,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      projectId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'projects', key: 'id' }
       }
     });
   },
