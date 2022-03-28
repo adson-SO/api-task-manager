@@ -8,6 +8,7 @@ class ProjectRepository {
                 as: 'tasks'
             }]
         });
+        
         return result;
     }
 
@@ -19,6 +20,19 @@ class ProjectRepository {
                 as: 'tasks'
             }
         });
+        
+        return result;
+    }
+
+    async findOne(id) {
+        const result = await models.Project.findByPk(id, {
+            include: {
+                model: models.Task,
+                attributes: { exclude: ['id', 'projectId'] },
+                as: 'tasks'
+            }
+        });
+
         return result;
     }
 }

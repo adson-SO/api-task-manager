@@ -16,7 +16,17 @@ class ProjectController {
             const result = await ProjectService.find();
             return res.status(200).json(result);
         } catch (err) {
-            return res.status(500).json({ description: err.name, name: err.message })
+            return res.status(500).json({ description: err.name, name: err.message });
+        }
+    }
+
+    async findOne(req, res) {
+        const { id } = req.params;
+        try {
+            const result = await ProjectService.findOne(id);
+            return res.status(200).json(result);
+        } catch (err) {
+            return res.status(500).json({ description: err.name, name: err.message });
         }
     }
 }

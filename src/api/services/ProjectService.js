@@ -10,6 +10,11 @@ class ProjectService {
         const result = await ProjectRepository.find();
         return result;
     }
+
+    async findOne(id) {
+        const result = await ProjectRepository.findOne(id);
+        return result;
+    }
 }
 
 module.exports = new ProjectService();
