@@ -3,13 +3,8 @@ const Joi = require('joi');
 module.exports = async (req, res, next) => {
     try {
         const schema = Joi.object({
-            title: Joi.string().min(10).trim().required(),
-            description: Joi.string().min(15).trim().required(),
-            tasks: Joi.array().items(Joi.object({
-                title: Joi.string().min(10).trim().required(),
-                taskRelevance: Joi.number().integer().positive().required(),
-                completed: Joi.boolean().required()
-            })).required()
+            title: Joi.string().min(10).trim(),
+            description: Joi.string().min(15).trim()
         });
 
         const { error } = await schema.validate(req.body, { abortEarly: true });
