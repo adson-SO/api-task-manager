@@ -4,7 +4,16 @@ class ProjectController {
     async create(req, res) {
         const payload = req.body;
         try {
-            const result = await ProjectService.create(payload);
+            const project = await ProjectService.create(payload);
+            const result = {
+                id: project.id,
+                title: project.title,
+                description: project.description,
+                createdAt: project.createdAt,
+                updatedAt: project.updatedAt,
+                tasks: project.tasks
+            };
+            
             return res.status(201).json(result);
         } catch (err) {
             return res.status(500).json({ description: err.name, name: err.message });

@@ -3,6 +3,12 @@ const ProjectRepository = require('../repositories/ProjectRepository');
 class ProjectService {
     async create(payload) {
         const result = await ProjectRepository.create(payload);
+
+        result.tasks.map(task => {
+            task.id = undefined;
+            task.projectId = undefined;
+        });
+        
         return result;
     }
 
