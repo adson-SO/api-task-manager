@@ -43,6 +43,12 @@ class ProjectRepository {
 
         return result;
     }
+
+    async delete(id) {
+        return models.Project.destroy({
+            where: { id: id }
+        });
+    }
 }
 
 module.exports = new ProjectRepository();

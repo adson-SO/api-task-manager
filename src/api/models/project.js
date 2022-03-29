@@ -12,7 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Project.hasMany(models.Task, {
         foreignKey: 'projectId',
-        as: 'tasks'
+        as: 'tasks',
+        onDelete: 'CASCADE',
+        hooks: true
       });
     }
   }

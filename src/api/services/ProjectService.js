@@ -20,6 +20,10 @@ class ProjectService {
         const result = await ProjectRepository.update(id, payload);
         return result;
     }
+
+    async delete(id) {
+        return ProjectRepository.delete(id);
+    }
 }
 
 module.exports = new ProjectService();

@@ -47,9 +47,26 @@ class ProjectController {
 
             await ProjectService.update(id, payload);
 
-            return res.status(200).json(result);
+            return res.status(204).end();
         } catch (err) {
             return res.status(500).json({ description: err.name, name: err.message })
+        }
+    }
+
+    async delete(req, res) {
+        const { id } = req.params;
+        try {
+            const result = await ProjectService.findOne(id);
+
+            if(result === null) {
+                return res.status(404).json({ description: 'Not Found', name: 'Id not found in the database' });
+            }
+
+            await ProjectService.delete(id);
+
+            return res.status(204).end(); 
+        } catch (err) {
+            return res.status(500).json({ description: err.name, name: err.message });
         }
     }
 }
